@@ -19,7 +19,7 @@ on:
       isMainOrRelease:
         description: 'This build is for the main branch or a release (set to "false" for development branch builds)'
         required: true
-        default: 'true'
+        default: 'false'
         type: choice
         options:
         - 'true'
@@ -85,7 +85,7 @@ jobs:
       - name: Build Gradle source code
         if: github.event_name == 'workflow_dispatch' # Use the input values provided by the workflow dispatch.
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           ORG_GRADLE_PROJECT_signingKeyId:  ${{ secrets.GPG_KEYID }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
