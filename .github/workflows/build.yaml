@@ -159,16 +159,16 @@ jobs:
       - name: Trigger Maven workflow dispatch event with GitHub CLI
         if: github.event_name == 'push'
         env:
-          GH_TOKEN: ${{ secrets.GALASA_TEAM_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN}}
         run: |
-          gh workflow run build.yaml --repo https://github.com/galasa-dev/maven
+          gh workflow run build.yaml --repo https://github.com/jackyhodev/maven
       
       - name: Trigger Maven workflow dispatch event with GitHub CLI
         if: github.event_name == 'workflow_dispatch'
         env:
-          GH_TOKEN: ${{ secrets.GALASA_TEAM_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh workflow run build.yaml --repo https://github.com/galasa-dev/maven --ref ${{ env.BRANCH }} -f jacocoEnabled=${{ inputs.jacocoEnabled }} -f isMainOrRelease=${{ inputs.isMainOrRelease }}
+          gh workflow run build.yaml --repo https://github.com/jackyhodev/maven --ref ${{ env.BRANCH }} -f jacocoEnabled=${{ inputs.jacocoEnabled }} -f isMainOrRelease=${{ inputs.isMainOrRelease }}
 
   report-failure:
     name: Report failure in workflow
