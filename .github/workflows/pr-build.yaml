@@ -43,6 +43,7 @@ jobs:
         run: |
           gradle check publish --info \
           --no-daemon --console plain \
+          -Dgpg.skip=true \
           -PsourceMaven=https://repo.maven.apache.org/maven2/ \
           -PcentralMaven=https://repo.maven.apache.org/maven2/ \
           -PtargetMaven=${{ github.workspace }}/repo 
